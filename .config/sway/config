@@ -76,10 +76,10 @@ output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
     bindsym $mod+f fullscreen
 
     # Toggle the current focus between tiling and floating mode
-    bindsym $mod+Shift+d floating toggle
+    bindsym $mod+d floating toggle
 
     # Swap focus between the tiling area and the floating area
-    bindsym $mod+d focus mode_toggle
+    bindsym $mod+Shift+d focus mode_toggle
 
     # Move focus to the parent container
     bindsym $mod+a focus parent
@@ -115,8 +115,7 @@ bar {
     bindsym $mod+Return exec $term
 
     # Kill focused window
-    bindsym $mod+Shift+q kill
-
+    bindsym $mod+q kill
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
