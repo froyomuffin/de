@@ -8,15 +8,16 @@
 }
 
 window#waybar {
-    background-color: rgba(43, 48, 59, 0.5);
+    background-color: #131821;
     border-bottom: 3px solid rgba(100, 114, 125, 0.5);
     color: #ffffff;
     transition-property: background-color;
     transition-duration: .5s;
+    opacity: 0.9;
 }
 
 window#waybar.hidden {
-    opacity: 0.2;
+    opacity: 0.1;
 }
 
 /*
@@ -99,6 +100,8 @@ window#waybar.chromium {
     margin-right: 0;
 }
 
+/*
+
 #clock {
     background-color: #bbccdd;
 }
@@ -112,6 +115,8 @@ window#waybar.chromium {
     color: #ffffff;
     background-color: #26A65B;
 }
+
+*/
 
 @keyframes blink {
     to {
@@ -134,10 +139,12 @@ label:focus {
     background-color: #000000;
 }
 
+/*
 #cpu {
     background-color: #2ecc71;
     color: #000000;
 }
+
 
 #memory {
     background-color: #9b59b6;
@@ -168,6 +175,7 @@ label:focus {
     background-color: #90b1b1;
     color: #2a5c45;
 }
+*/
 
 #custom-media {
     background-color: #66cc99;
@@ -213,6 +221,8 @@ label:focus {
     color: #2d3436;
 }
 
+
+/*
 #mpd {
     background-color: #66cc99;
     color: #2a5c45;
@@ -253,3 +263,4 @@ label:focus {
 #keyboard-state > label.locked {
     background: rgba(0, 0, 0, 0.2);
 }
+*/
