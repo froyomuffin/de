@@ -8,8 +8,8 @@
 }
 
 window#waybar {
-    background-color: #131821;
-    border-bottom: 3px solid rgba(100, 114, 125, 0.5);
+    background-color: #000000;
+    /*border-bottom: 3px solid rgba(100, 114, 125, 0.5);*/
     color: #ffffff;
     transition-property: background-color;
     transition-duration: .5s;
@@ -80,8 +80,8 @@ window#waybar.chromium {
 #mode,
 #idle_inhibitor,
 #mpd {
-    padding: 0 10px;
-    margin: 0 4px;
+    padding: 0 0.4em;
+    margin: 1px 1px;
     color: #ffffff;
 }
 

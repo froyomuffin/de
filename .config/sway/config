@@ -21,8 +21,8 @@ set $right l
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-#output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x10 fill
-output * bg '#FFFFFF' solid_color
+output * bg /usr/share/backgrounds/sway/dw.jpeg fill
+# output * bg '#FFFFFF' solid_color
 #
 # Example configuration:
 #
@@ -201,6 +201,6 @@ exec_always autotiling
 for_window [shell="xwayland"] title_format "%title [XWayland]"
 
 # Borders
-#default_border none
+default_border none
 
 include /etc/sway/config.d/*
