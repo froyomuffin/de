@@ -21,14 +21,17 @@ set $right l
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg /usr/share/backgrounds/sway/dw.jpeg fill
+# output * bg /usr/share/backgrounds/sway/dw.jpeg fill
 # output * bg '#FFFFFF' solid_color
+  output * bg /home/tw/wallpaper/W_2014_361_DARKWING.jpg fill
 #
 # Example configuration:
 #
 #   output HDMI-A-1 resolution 1920x1080 position 1920,0
 #
 # You can get the names of your outputs by running: swaymsg -t get_outputs
+
+output HDMI-A-1 scale 1
 
 ### Idle configuration
 #
@@ -106,7 +109,7 @@ bar {
 
 # Basics:
     # Default terminal
-    set $term urxvt
+    set $term kitty
 
     # Launcher
     #set $menu dmenu_path | dmenu | xargs swaymsg exec --
@@ -203,4 +206,14 @@ for_window [shell="xwayland"] title_format "%title [XWayland]"
 # Borders
 default_border none
 
+# Faster repeats!
+input * {
+  repeat_delay 300
+  repeat_rate 50
+}
+
+# Bind volumes
+bindsym XF86AudioMute exec pulseaudio-ctl mute
+bindsym XF86AudioRaiseVolume exec pulseaudio-ctl up
+bindsym XF86AudioLowerVolume exec pulseaudio-ctl down
 include /etc/sway/config.d/*
