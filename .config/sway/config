@@ -15,6 +15,7 @@ set $mod Mod4
 # output * bg /usr/share/backgrounds/sway/dw.jpeg fill
 # output * bg '#FFFFFF' solid_color
   output * bg /home/tw/wallpaper/W_2014_361_DARKWING.jpg fill
+#output * bg /home/tw/wallpaper/nord.png fill
 #
 # Example configuration:
 #
@@ -100,8 +101,8 @@ bar {
 
     # Launcher
     #set $menu dmenu_path | dmenu | xargs swaymsg exec --
-    set $menu dmenu_path | dmenu | xargs swaymsg exec --
-    bindsym $mod+space exec $menu
+    bindsym $mod+space exec wofi --show run
+    bindsym $mod+Alt+space exec wofi --show drun
 
     # Start a terminal
     bindsym $mod+Return exec $term
