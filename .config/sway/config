@@ -1,6 +1,12 @@
 # Global mod key
   set $mod Mod4
 
+# Set up wob
+  set $WOBSOCK $XDG_RUNTIME_DIR/wob.sock
+  exec mkfifo $WOBSOCK && tail -f $WOBSOCK | wob
+
+exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK
+
 # Background
   output * bg /home/tw/wallpaper/W_2014_361_DARKWING.jpg fill
 
@@ -12,9 +18,9 @@
   bindsym $mod+minus splitv
 
 # Switch the current container between different layout styles
-  bindsym $mod+s layout stacking
-  bindsym $mod+w layout tabbed
-  bindsym $mod+e layout toggle split
+  #bindsym $mod+s layout stacking
+  #bindsym $mod+w layout tabbed
+  #bindsym $mod+e layout toggle split
 
 # Make the current focus fullscreen
   bindsym $mod+f fullscreen
@@ -125,10 +131,13 @@
     repeat_rate 50
   }
 
+# Suspend
+  bindsym Ctrl+Shift+S exec systemctl suspend
+
 # Bind media keys
-  bindsym XF86AudioMute exec pulseaudio-ctl mute
-  bindsym XF86AudioRaiseVolume exec pulseaudio-ctl up
-  bindsym XF86AudioLowerVolume exec pulseaudio-ctl down
+  bindsym XF86AudioMute exec pulseaudio-ctl mute && pulseaudio-ctl status | grep "muted.*yes" && echo 0 > $WOBSOCK || pulseaudio-ctl current | sed 's/%//g' > $WOBSOCK
+  bindsym XF86AudioRaiseVolume exec pulseaudio-ctl up && pulseaudio-ctl current | sed 's/%//g' > $WOBSOCK 
+  bindsym XF86AudioLowerVolume exec pulseaudio-ctl down && pulseaudio-ctl current | sed 's/%//g' > $WOBSOCK 
 
   bindsym XF86AudioPlay exec playerctl play-pause
   bindsym XF86AudioNext exec playerctl next
@@ -137,6 +146,9 @@
 # Screenshots
   bindsym $mod+p exec grim - | wl-copy
   bindsym $mod+Shift+p exec grim -g "$(slurp)" - | wl-copy
+
+# Disable mouse automatic focus under mouse
+focus_follows_mouse no
 
 # ===== Try later =====
 # output * bg '#FFFFFF' solid_color
