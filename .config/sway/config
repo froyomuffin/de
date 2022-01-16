@@ -18,9 +18,9 @@ exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK
   bindsym $mod+minus splitv
 
 # Switch the current container between different layout styles
-  #bindsym $mod+s layout stacking
-  #bindsym $mod+w layout tabbed
-  #bindsym $mod+e layout toggle split
+  bindsym $mod+s layout stacking
+  bindsym $mod+w layout tabbed
+  bindsym $mod+e layout toggle split
 
 # Make the current focus fullscreen
   bindsym $mod+f fullscreen
@@ -43,6 +43,9 @@ exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK
 # Launcher
   bindsym $mod+space exec wofi --show run
   bindsym $mod+Alt+space exec wofi --show drun
+
+# Simple FZF based launcher 'treb'
+  bindsym $mod+Ctrl+Alt+space exec kitty 'treb'
 
 # Start a terminal
   bindsym $mod+Return exec $term
@@ -136,8 +139,8 @@ exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK
 
 # Bind media keys
   bindsym XF86AudioMute exec pulseaudio-ctl mute && pulseaudio-ctl status | grep "muted.*yes" && echo 0 > $WOBSOCK || pulseaudio-ctl current | sed 's/%//g' > $WOBSOCK
-  bindsym XF86AudioRaiseVolume exec pulseaudio-ctl up && pulseaudio-ctl current | sed 's/%//g' > $WOBSOCK 
-  bindsym XF86AudioLowerVolume exec pulseaudio-ctl down && pulseaudio-ctl current | sed 's/%//g' > $WOBSOCK 
+  bindsym XF86AudioRaiseVolume exec pulseaudio-ctl up && pulseaudio-ctl current | sed 's/%//g' > $WOBSOCK && pulseaudio-ctl status | grep "muted.*yes" && pulseaudio-ctl mute
+  bindsym XF86AudioLowerVolume exec pulseaudio-ctl down && pulseaudio-ctl current | sed 's/%//g' > $WOBSOCK && pulseaudio-ctl status | grep "muted.*yes" && pulseaudio-ctl mute
 
   bindsym XF86AudioPlay exec playerctl play-pause
   bindsym XF86AudioNext exec playerctl next
@@ -148,7 +151,7 @@ exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK
   bindsym $mod+Shift+p exec grim -g "$(slurp)" - | wl-copy
 
 # Disable mouse automatic focus under mouse
-focus_follows_mouse no
+# focus_follows_mouse no
 
 # ===== Try later =====
 # output * bg '#FFFFFF' solid_color
@@ -163,5 +166,9 @@ focus_follows_mouse no
 # Show the next scratchpad window or hide the focused scratchpad window.
 # If there are multiple scratchpad windows, this command cycles through them.
 #bindsym $mod+minus scratchpad show
+
+# Patches
+# Bug in polkit where tty client will fail
+exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 
 include /etc/sway/config.d/*
