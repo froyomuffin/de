@@ -13,6 +13,9 @@ exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK
 # HIDPI
   output HDMI-A-1 scale 1.5
 
+# Adaptive Refresh Rate
+  output * adaptive_sync on
+
 # Switch to vertical or horizontal split
   bindsym $mod+backslash splith
   bindsym $mod+minus splitv
@@ -153,6 +156,12 @@ exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK
 # Disable mouse automatic focus under mouse
 # focus_follows_mouse no
 
+## Patches
+# Bug in polkit where tty client will fail
+  exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+
+include /etc/sway/config.d/*
+
 # ===== Try later =====
 # output * bg '#FFFFFF' solid_color
 
@@ -167,8 +176,3 @@ exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK
 # If there are multiple scratchpad windows, this command cycles through them.
 #bindsym $mod+minus scratchpad show
 
-# Patches
-# Bug in polkit where tty client will fail
-exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-
-include /etc/sway/config.d/*
