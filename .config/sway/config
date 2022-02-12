@@ -160,6 +160,12 @@ exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK
 # Bug in polkit where tty client will fail
   exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 
+# Adjust fan
+# Quiet mode
+  bindsym $mod+B exec fanc 25 && notify-send "Setting fans to quiet mode"
+# Performance mode
+  bindsym $mod+Shift+B exec fanc 40 && notify-send "Setting fans to performance mode"
+
 include /etc/sway/config.d/*
 
 # ===== Try later =====
