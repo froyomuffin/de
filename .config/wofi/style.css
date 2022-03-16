@@ -1,0 +1,36 @@
+*{
+  font-family: Roboto, Helvetica, Arial, sans-serif;
+  font-size: 13px;
+}
+
+window {
+  opacity: 0.9;
+}
+
+#input {
+  margin: 0px;
+  border-radius: 0px;
+  border: none
+  border-bottom: 2px solid white;
+  background-color: black;
+  color: white;
+}
+
+#inner-box {
+}
+
+#outer-box {
+  margin: 0px;
+  padding:3px;
+  background-color: black;
+}
+
+#text {
+  padding: 2px;
+  color: white;
+}
+
+#entry:selected {
+  background-color: #3F3F3F;
+  outline: none;
+}
