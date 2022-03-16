@@ -31,6 +31,10 @@ exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK
 # Toggle the current focus between tiling and floating mode
   bindsym $mod+d floating toggle
 
+# Cursor management
+seat * hide_cursor 8000
+seat * hide_cursor when-typing enable
+
 # Swap focus between the tiling area and the floating area
   bindsym $mod+Shift+d focus mode_toggle
 
@@ -43,15 +47,20 @@ exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK
 # Default terminal
   set $term kitty
 
+# Default browser
+  set $browser chrome
+
 # Launcher
   bindsym $mod+space exec wofi --show run
-  bindsym $mod+Alt+space exec wofi --show drun
 
 # Simple FZF based launcher 'treb'
   bindsym $mod+Ctrl+Alt+space exec kitty 'treb'
 
 # Start a terminal
   bindsym $mod+Return exec $term
+
+# Start a Chrome
+  bindsym $mod+backspace exec $browser
 
 # Kill focused window
   bindsym $mod+q kill
@@ -151,10 +160,13 @@ exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK
 
 # Screenshots
   bindsym $mod+p exec grim - | wl-copy
-  bindsym $mod+Shift+p exec grim -g "$(slurp)" - | wl-copy
+  bindsym $mod+Ctrl+Shift+p exec grim -g "$(slurp)" - | wl-copy
 
 # Disable mouse automatic focus under mouse
 # focus_follows_mouse no
+
+# Automount disk
+exec /usr/bin/udiskie
 
 ## Patches
 # Bug in polkit where tty client will fail
@@ -181,4 +193,3 @@ include /etc/sway/config.d/*
 # Show the next scratchpad window or hide the focused scratchpad window.
 # If there are multiple scratchpad windows, this command cycles through them.
 #bindsym $mod+minus scratchpad show
-
