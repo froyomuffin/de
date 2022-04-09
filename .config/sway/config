@@ -162,6 +162,12 @@ seat * hide_cursor when-typing enable
   bindsym $mod+p exec grim - | wl-copy
   bindsym $mod+Ctrl+Shift+p exec grim -g "$(slurp)" - | wl-copy
 
+# Videos
+#  bindsym $mod+v exec wf-recorder -f ~/recordings/"recording-$(date +'%H%M%S-%d%m%Y').mp4"
+  bindsym $mod+Ctrl+Shift+v exec wf-recorder -g "$(slurp)" -f ~/recordings/"recording-$(date +'%H%M%S-%d%m%Y').mp4"
+
+  bindsym $mod+escape exec pkill -INT wf-recorder || notify-send "Ended recording"
+
 # Disable mouse automatic focus under mouse
 # focus_follows_mouse no
 
@@ -176,7 +182,7 @@ exec /usr/bin/udiskie
 # Quiet mode
   bindsym $mod+B exec fanc 25 && notify-send "Setting fans to quiet mode"
 # Performance mode
-  bindsym $mod+Shift+B exec fanc 40 && notify-send "Setting fans to performance mode"
+  bindsym $mod+Shift+B exec fanc 35 && notify-send "Setting fans to performance mode"
 
 include /etc/sway/config.d/*
 
