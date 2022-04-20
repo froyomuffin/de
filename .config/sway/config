@@ -11,7 +11,7 @@ exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK
   output * bg /home/tw/wallpaper/W_2014_361_DARKWING.jpg fill
 
 # HIDPI
-  output HDMI-A-1 scale 1.5
+  output HDMI-A-1 scale 1.5 mode 3840x2160@120Hz
 
 # Adaptive Refresh Rate
   output * adaptive_sync on
@@ -183,6 +183,13 @@ exec /usr/bin/udiskie
   bindsym $mod+B exec fanc 25 && notify-send "Setting fans to quiet mode"
 # Performance mode
   bindsym $mod+Shift+B exec fanc 35 && notify-send "Setting fans to performance mode"
+
+# Adjust brightness
+# Low brightness
+bindsym $mod+N exec brightc 35 && notify-send "Setting display to low mode"
+
+# High brightness
+bindsym $mod+Shift+N exec brightc 85 && notify-send "Setting display to bright mode"
 
 include /etc/sway/config.d/*
 
