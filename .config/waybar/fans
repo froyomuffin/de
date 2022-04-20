@@ -1,0 +1,19 @@
+#!/bin/bash
+
+# Fan definitions
+# CPU=fan2
+# GPU=fan1
+# CASE=fan5
+
+# FILTER="$CPU\|$GPU\|$CASE"
+# LABELS="CPU GPU CASE"
+# LABELS=$(echo $LABELS | sed 's/ /\n/g')
+
+# SPEEDS=$(sensors | grep $FILTER | grep -v max | awk '{ print $2 }')
+
+# LINES=$(paste -d':' <(echo "$LABELS") <(echo "$SPEEDS") | sed 's/:/: /g')
+
+# echo "$LINES" | xargs
+
+PERCENTAGE=$(cat /tmp/fand.last)
+echo "$PERCENTAGE%"

@@ -4,9 +4,31 @@
     "height": 25, // Waybar height (to be removed for auto height)
     // "width": 1280, // Waybar width
     // Choose the order of the modules
-    "modules-left": ["sway/workspaces", "sway/mode", "custom/media"],
-    "modules-center": ["sway/window"],
-    "modules-right": ["network", "cpu", "memory", "keyboard-state", "custom/temps", "custom/fans", "pulseaudio", "clock", "tray"],
+    "modules-left": [
+      "sway/workspaces",
+        "custom/separator",
+      "custom/temps",
+        "custom/separator",
+      "custom/fans",
+    ],
+    "modules-center": [
+      "sway/mode",
+      "sway/window",
+      "custom/media",
+    ],
+    "modules-right": [
+      "network",
+        "custom/separator",
+      "cpu",
+        "custom/separator",
+      "memory",
+        "custom/separator",
+      "pulseaudio",
+        "custom/separator",
+      "clock",
+      "tray",
+      "custom/menu",
+    ],
     // Modules configuration
     // "sway/workspaces": {
     //     "disable-scroll": true,
@@ -168,6 +190,23 @@
         "escape": true,
         "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null" // Script in resources folder
         // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
-    }
+    },
+   "custom/menu": {
+        "format": "{icon}{}",
+        "max-length": 40,
+        "format-icons": [""],
+        "interval": 1,
+        "escape": true,
+        "on-click": "systemctl suspend"
+        // "exec": "$HOME/.config/waybar/temps 2> /dev/null"
+    },
+   "custom/separator": {
+        "format": "{icon}{}",
+        //"format-icons": [""],
+        "format-icons": ["|"],
+        "interval": 1,
+        "escape": true,
+        // "exec": "$HOME/.config/waybar/temps 2> /dev/null"
+    },
 }
 
