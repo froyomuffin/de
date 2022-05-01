@@ -11,7 +11,7 @@ exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK
   output * bg /home/tw/wallpaper/W_2014_361_DARKWING.jpg fill
 
 # HIDPI
-  output HDMI-A-1 scale 1.5 mode 3840x2160@120Hz
+  output * scale 1.5 mode 3840x2160@143.999Hz
 
 # Adaptive Refresh Rate
   output * adaptive_sync on
